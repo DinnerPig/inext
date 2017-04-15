@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>isee </title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>首页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"/>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    -->
+    <script src="../../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"/>
 </head>
-<body align="center">
-    <header>
-        <h1>产品</h1>
-    </header>
-    <p>
-        View the <a th:href="@{/about}">About</a> page.
-    </p>
-    <table>
-        <tr th:each="video : ${videos}">
-            <td th:text="${video.id}">ID</td>
-            <td th:text="${video.productNo}">NO</td>
-        </tr>
-        <dt>Product name</dt>
-        <dd th:text="${video.id}">red Chair</dd>
-    </table>
-
-    <!--底部样式-->
-
-    <div align="center">
-        <p class="l_f">版权所有：杭州艾奈斯特信息技术有限公司   *ICP备*号</p>
-        <p class="r_f">地址：杭州******  邮编：***** 技术支持：XXXX</p>
+<body>
+<!-- 页面显示部分 -->
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>视频列表</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a th:href="@{'/video/list'}" target="_blank">link</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
+
+
+<div style="position:absolute;bottom:10px;left:12px;height:24px;">
+    <p>版权所有：杭州艾奈斯特信息技术有限公司   *ICP备*号</p>
+    <p>地址：杭州******  邮编：***** 技术支持：XXXX</p>
+</div>
 </body>
 </html>
+

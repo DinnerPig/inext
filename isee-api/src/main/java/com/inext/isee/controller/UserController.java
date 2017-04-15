@@ -17,8 +17,8 @@ import java.util.List;
  * 需注意的一点是 hasRole 表达式认为每个角色名字前都有一个前缀 'ROLE_'。所以这里的 'ADMIN' 其实在
  * 数据库中存储的是 'ROLE_ADMIN' 。这个 @PreAuthorize 可以修饰Controller也可修饰Controller中的方法。
  **/
-@RestController
-@RequestMapping("/users")
+//@RestController
+//@RequestMapping("/users")
 public class UserController {
     @Autowired
     SysUserService sysUserService;

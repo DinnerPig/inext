@@ -26,7 +26,7 @@ class BookController {
     }
 
     @RequestMapping('/book/{id}')
-    Book getBook(@PathVariable(name = 'id')int id) {
+    Book getBook(@PathVariable(name = 'id') int id) {
         service.getBook(id)
     }
 

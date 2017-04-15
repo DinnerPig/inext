@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class SysUser implements UserDetails{
     //@JsonIgnore
     private String password;
     private String rawPassword;
+    private String createTime;
     @JsonIgnore
     private List<SysRole> roles;
     private List<? extends GrantedAuthority> authorities;
@@ -117,5 +119,13 @@ public class SysUser implements UserDetails{
 
     public void setAuthorities(List<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }

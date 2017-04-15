@@ -8,6 +8,7 @@
         <id property="id" column="id"/>
         <result property="username" column="user_name"/>
         <result property="password" column="password"/>
+        <result property="createTime" column="create_time"/>
         <collection property="roles" ofType="com.inext.isee.entity.sys.SysRole">
             <result column="name" property="name"/>
         </collection>

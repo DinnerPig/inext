@@ -29,4 +29,8 @@ jwt:
     authentication:
       path: auth
       refresh: refresh
-      register: "auth/register"
+      register: auth/register
+#file
+downLoad:
+  filePath:
+    video: "D://test//video//"

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody
  * @author zhiliao
  * @since 2017-04-07
  */
-@Controller
+//@Controller
 class LoginController {
 
     /**

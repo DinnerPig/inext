@@ -70,9 +70,9 @@ public class AuthController {
         /**
          * 非法请求 rawPassword = md5(password + malt)
          */
-        if (!passwordMd5.equals(addedUser.getRawPassword())){
+        /*if (!passwordMd5.equals(addedUser.getRawPassword())){
             return null;
-        }
+        }*/
         //注册
         authService.register(addedUser);
         final String token = authService.login(addedUser.getUsername(), addedUser.getPassword());

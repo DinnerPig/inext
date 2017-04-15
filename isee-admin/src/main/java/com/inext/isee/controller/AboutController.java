@@ -26,26 +26,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Roy Clarkson
  */
 @Controller
-public class AboutController {
-
-	/**
-	 * Show the About page to the user. This controller renders a different version of the
-	 * about view for normal, mobile, and tablet browsers.
-	 */
-	@RequestMapping("/about")
-	public String home() {
-		return "about";
-	}
-
-	@RequestMapping("/helloFtl")
-	public String helloFtl(Model model) {
-		model.addAttribute("hello", "Hello zhiliao freemarker !");
-		return "hello";
-	}
-
-	@RequestMapping("/helloHtml")
-	public String helloHtml(Model model) {
-		model.addAttribute("hello", "Hello zhiliao thymelef!");
-		return "hello";
-	}
+public class AboutController
+{
+    
+    /**
+     * Show the About page to the user. This controller renders a different
+     * version of the about view for normal, mobile, and tablet browsers.
+     */
+    @RequestMapping("/")
+    public String home()
+    {
+        return "index";
+    }
+    
+    @RequestMapping("/helloFtl")
+    public String helloFtl(Model model)
+    {
+        model.addAttribute("hello", "Hello zhiliao freemarker !");
+        return "hello";
+    }
+    
+    @RequestMapping("/helloHtml")
+    public String helloHtml(Model model)
+    {
+        model.addAttribute("hello", "Hello zhiliao thymelef!");
+        return "hello";
+    }
 }

@@ -13,8 +13,8 @@ import javax.annotation.Resource
  * @author zhiliao
  * @since 2017-04-05
  */
-@RestController
-@RequestMapping("/product")
+//@RestController
+//@RequestMapping("/product")
 class ProductController {
     @Resource
     VideoProductService videoProductService

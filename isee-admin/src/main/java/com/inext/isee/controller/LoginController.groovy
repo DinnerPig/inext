@@ -25,7 +25,9 @@ class LoginController {
      */
     @RequestMapping(value = "/login")
     @ResponseBody
-    Object login(@AuthenticationPrincipal SysUser loginedUser, @RequestParam(name = "logout", required = false) String logout) {
+    Object login(
+            @AuthenticationPrincipal SysUser loginedUser,
+            @RequestParam(name = "logout", required = false) String logout) {
         if (logout != null) {
             null;
         }

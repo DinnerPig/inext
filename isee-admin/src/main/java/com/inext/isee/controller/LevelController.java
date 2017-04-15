@@ -10,15 +10,16 @@
 */
 package com.inext.isee.controller;
 
-import com.inext.isee.entity.product.Level;
-import com.inext.isee.service.LevelService;
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
-import java.util.List;
+import com.inext.isee.entity.product.Level;
+import com.inext.isee.service.LevelService;
 
 /**
  * LevelController
@@ -28,13 +29,15 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/level")
-public class LevelController {
-
+public class LevelController
+{
+    
     @Resource
     LevelService levelService;
-
+    
     @RequestMapping("list")
-    public String getLevelList(Model model) {
+    public String getLevelList(Model model)
+    {
         List<Level> list = levelService.getLevelList();
         model.addAttribute("levelList", list);
         return "pc/level";

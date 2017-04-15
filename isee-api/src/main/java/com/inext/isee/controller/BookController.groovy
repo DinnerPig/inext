@@ -14,7 +14,7 @@ import javax.annotation.Resource
  * @author zhiliao
  * @since 2017-03-30
  */
-@RestController
+//@RestController
 class BookController {
 
     @Resource

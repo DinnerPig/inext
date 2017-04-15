@@ -48,7 +48,7 @@
             <span class="btn btn-info">multi video upload</span>
         </div>
         <div class="panel-body" align="center">
-            <form class="form-horizontal" role="form" action="/video/add?fileType=multiFile" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" role="form" action="/video/add?fileType=multiFile&;fileNum=5" method="POST" enctype="multipart/form-data">
                 <table class="table">
                     <!--<caption>上下文表格布局</caption>-->
                     <!--<input type="hidden" value="multiFile" name="fileType"/>-->
@@ -115,7 +115,7 @@
 
 
 <!--<p>多文件上传</p>
-<form method="POST" enctype="multipart/form-data" action="/batch/upload">
+<form method="POST" enctype="multipart/form-data" action="/basingleUploadload">
     <p>文件1：<input type="file" name="file" /></p>
     <p>文件2：<input type="file" name="file" /></p>
     <p><input type="submit" value="上传" /></p>

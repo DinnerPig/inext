@@ -10,8 +10,10 @@
 */
 package com.inext.isee.controller;
 
+import com.inext.isee.util.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,53 +38,14 @@ import java.util.List;
 public class FileController {
     private static final Logger logger = LoggerFactory.getLogger(FileController.class);
 
+    @Value("${downLoad.filePath.video}")
+    private String filePath;
+
     //文件下载相关代码
     @RequestMapping("/download")
-    public String downloadFile(org.apache.catalina.servlet4preview.http.HttpServletRequest request, HttpServletResponse response){
-        //String fileName = "FileUploadTests.java";
-        String fileName = "host.txt";
+    public void downloadFile(HttpServletRequest request, HttpServletResponse response, @RequestParam("fileName") String fileName){
         if (fileName != null) {
-            //当前是从该工程的WEB-INF//File//下获取文件(该目录可以在下面一行代码配置)然后下载到C:\\users\\downloads即本机的默认下载的目录
-            //String realPath = request.getServletContext().getRealPath("//WEB-INF//");
-            String realPath = "D://test//";
-            File file = new File(realPath, fileName);
-            if (file.exists()) {
-                response.setContentType("application/force-download");// 设置强制下载不打开
-                response.addHeader("Content-Disposition",
-                        "attachment;fileName=" + fileName);// 设置文件名
-                byte[] buffer = new byte[1024];
-                FileInputStream fis = null;
-                BufferedInputStream bis = null;
-                try {
-                    fis = new FileInputStream(file);
-                    bis = new BufferedInputStream(fis);
-                    OutputStream os = response.getOutputStream();
-                    int i = bis.read(buffer);
-                    while (i != -1) {
-                        os.write(buffer, 0, i);
-                        i = bis.read(buffer);
-                    }
-                    System.out.println("success");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                } finally {
-                    if (bis != null) {
-                        try {
-                            bis.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (fis != null) {
-                        try {
-                            fis.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
+            FileUtil.downloadFile(request, response, fileName, filePath);
         }
-        return null;
     }
 }

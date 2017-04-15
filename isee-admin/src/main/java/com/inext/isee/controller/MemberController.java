@@ -10,14 +10,16 @@
 */
 package com.inext.isee.controller;
 
-import com.inext.isee.entity.product.Member;
-import com.inext.isee.service.MemberService;
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.annotation.Resource;
-import java.util.List;
+import com.inext.isee.entity.product.Member;
+import com.inext.isee.service.MemberService;
 
 /**
  * MemberController
@@ -27,12 +29,14 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/member")
-public class MemberController {
+public class MemberController
+{
     @Resource
     MemberService memberService;
-
+    
     @RequestMapping("/list")
-    public String getMemberList(Model model) {
+    public String getMemberList(Model model)
+    {
         List<Member> list = memberService.getMemberList();
         model.addAttribute("memberList", list);
         return "pc/member";
