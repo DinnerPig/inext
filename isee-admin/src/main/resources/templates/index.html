@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>isee </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body align="center">
+    <header>
+        <h1>产品</h1>
+    </header>
+    <p>
+        View the <a th:href="@{/about}">About</a> page.
+    </p>
+    <table>
+        <tr th:each="video : ${videos}">
+            <td th:text="${video.id}">ID</td>
+            <td th:text="${video.productNo}">NO</td>
+        </tr>
+        <dt>Product name</dt>
+        <dd th:text="${video.id}">red Chair</dd>
+    </table>
+
+    <!--底部样式-->
+
+    <div align="center">
+        <p class="l_f">版权所有：杭州艾奈斯特信息技术有限公司   *ICP备*号</p>
+        <p class="r_f">地址：杭州******  邮编：***** 技术支持：XXXX</p>
+    </div>
+</body>
+</html>

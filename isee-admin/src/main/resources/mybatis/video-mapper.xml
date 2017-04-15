@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inext.isee.dao.IVideoProductDao">
+    <!--通过<resultMap>映射实体类属性名和表的字段名对应关系 -->
+    <resultMap type="VideoProduct" id="videoResultMap">
+        <!-- 用id属性来映射主键字段 -->
+        <id property="id" column="id"/>
+        <!-- 用result属性来映射非主键字段 -->
+        <result property="productNo" column="product_no"/>
+        <result property="title" column="title"/>
+        <result property="url" column="url"/>
+        <result property="snapshotUrl" column="snapshot_url"/>
+        <result property="pictureUrl" column="picture_url"/>
+        <result property="defaultPlayTime" column="default_play_time"/>
+        <result property="isSecondOpen" column="is_second_open"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <select id="getVideoProductList" resultMap="videoResultMap">
+        select * from video_product
+    </select>
+
+    <select id="getVideoProductByNo" resultMap="videoResultMap" parameterType="String">
+        select * from video_product where product_no = #{productNo}
+    </select>
+
+    <insert id="create" parameterType="VideoProduct">
+        INSERT into video_product
+        (product_no,title,url,snapshot_url,picture_url,default_play_time,is_second_open,status)
+        values
+        (#{productNo},#{title},#{url},#{snapshotUrl},#{pictureUrl},#{defaultPlayTime},#{isSecondOpen},#{status})
+    </insert>
+
+    <update id="updateStatusByNo" parameterType="VideoProduct">
+        UPDATE
+          video_product
+        set
+          status = #{status}
+        WHERE
+          product_no = #{productNo}
+    </update>
+
+</mapper>

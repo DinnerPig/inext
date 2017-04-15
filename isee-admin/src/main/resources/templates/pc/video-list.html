@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>产品列表页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"/>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    -->
+    <script src="../../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"/>
+</head>
+<body>
+<!-- 页面显示部分 -->
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h2>产品列表</h2>
+        </div>
+        <div class="panel-body">
+            <a href="#" class="btn btn-info" th:href="@{/video/pre-add}">添加产品</a>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>产品编号</th>
+                    <th>产品名称</th>
+                    <th>加入时间</th>
+                    <th>详情页</th>
+                    <th>审核状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  th:each="video : ${videoList}">
+                    <td th:text="${video.productNo}"/>
+                    <td th:text="${video.title}"/>
+                    <td th:text="${video.createTime}"/>
+                    <td>
+                        <a th:href="@{'/video/detail/'+${video.productNo}}" target="_blank">link</a>
+                    </td>
+                    <td>
+                        <span th:if="${video.status == '1'}">通过</span>
+                        <span th:if="${video.status == '0'}">未通过</span>
+                    </td>
+                    <td>
+                        <span th:if="${video.status == '1'}">
+                            <a href="#" class="btn btn-info" th:onclick="'javascript:offSale(\''+${video.productNo}+'\')'">下架</a>
+                        </span>
+                        <span th:if="${video.status == '0'}">
+                            <a href="#" class="btn btn-info" th:onclick="'javascript:onSale(\''+${video.productNo}+'\')'">上架</a>
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function offSale(productNo){
+        $.ajax({
+            url: "/video/offSale",
+            data: {
+                productNo: productNo
+            },
+            success: function( json ) {
+                //$( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+                //alert(result);
+                if (json == true) {
+                    window.location.reload();
+                } else {
+                    alert("下架失败");
+                }
+            }
+        });
+    }
+
+    function onSale(productNo){
+        $.ajax({
+            url: "/video/onSale",
+            data: {
+                productNo: productNo
+            },
+            success: function( json ) {
+                //$( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+                //alert(result);
+                if (json == true) {
+                    window.location.reload();
+                } else {
+                    alert("上架失败");
+                }
+            }
+        });
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="position:absolute;bottom:10px;left:12px;height:24px;">
+    <p>版权所有：杭州艾奈斯特信息技术有限公司   *ICP备*号</p>
+    <p>地址：杭州******  邮编：***** 技术支持：XXXX</p>
+</div>
+</body>
+</html>
+

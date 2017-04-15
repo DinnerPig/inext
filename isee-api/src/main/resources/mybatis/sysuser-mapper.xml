@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inext.isee.dao.ISysUserDao">
+
+    <resultMap id="userMap" type="com.inext.isee.entity.sys.SysUser">
+        <id property="id" column="id"/>
+        <result property="username" column="user_name"/>
+        <result property="password" column="password"/>
+        <collection property="roles" ofType="com.inext.isee.entity.sys.SysRole">
+            <result column="name" property="name"/>
+        </collection>
+    </resultMap>
+
+    <select id="findByUserName" parameterType="String" resultMap="userMap">
+        select
+          u.*,r.name
+        from
+          Sys_User u
+        LEFT JOIN
+          sys_role_user sru on u.id= sru.Sys_User_id
+        LEFT JOIN
+          Sys_Role r on sru.Sys_Role_id=r.id
+        where
+          user_name= #{userName}
+    </select>
+
+    <insert id="create" parameterType="com.inext.isee.entity.sys.SysUser">
+        <!--<selectKey resultType="int"  order="AFTER" keyProperty="id" >
+            SELECT LAST_INSERT_ID()
+        </selectKey>-->
+        INSERT into Sys_User
+        (user_name,password)
+        values
+        (#{username},#{password})
+    </insert>
+
+</mapper>

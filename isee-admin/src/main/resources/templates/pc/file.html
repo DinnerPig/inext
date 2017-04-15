@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>video add</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"/>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    -->
+    <script src="../../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"/>
+</head>
+<body>
+<!-- 页面显示部分 -->
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h2>video add</h2>
+        </div>
+        <div class="panel-body">
+            <span class="btn btn-info">single video upload</span>
+        </div>
+        <div class="panel-body" align="center">
+            <form class="form-horizontal" role="form" action="/video/add?fileType=singleFile" method="POST" enctype="multipart/form-data">
+                <!--<input type="hidden" value="singleFile" name="fileType"/>-->
+                <div class="col-sm-10">
+                    <tr>
+                        <th><input type="file" name="videoFile"/> </th>
+                        <br/>
+                        <th><input type="submit" class="btn btn-info"/></th>
+                    </tr>
+                </div>
+                <div class="col-sm-10">
+                    <br/>
+                    <br/>
+                    <tr>
+                        <a th:href="@{'/video/list'}" class="btn btn-info">video list</a>
+                        <th><a href="/file/download" class="btn btn-info">download</a></th>
+                    </tr>
+                </div>
+            </form>
+        </div>
+        <hr/>
+        <div class="panel-body">
+            <span class="btn btn-info">multi video upload</span>
+        </div>
+        <div class="panel-body" align="center">
+            <form class="form-horizontal" role="form" action="/video/add?fileType=multiFile" method="POST" enctype="multipart/form-data">
+                <table class="table">
+                    <!--<caption>上下文表格布局</caption>-->
+                    <!--<input type="hidden" value="multiFile" name="fileType"/>-->
+                    <thead>
+                    <tr>
+                        <th>video</th>
+                        <th>video content</th>
+                        <th>video face</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                            <td>video 1</td>
+                            <td><input type="file" name="file1" /></td>
+                            <td><input type="file" name="file1" /></td>
+                        </tr>
+                        <tr class="success">
+                            <td>video 2</td>
+                            <td><input type="file" name="file2" /></td>
+                            <td><input type="file" name="file2" /></td>
+                        </tr>
+                        <tr  class="warning">
+                            <td>video 3</td>
+                            <td><input type="file" name="file3" /></td>
+                            <td><input type="file" name="file3" /></td>
+                        </tr>
+                        <tr  class="danger">
+                            <td>video 4</td>
+                            <td><input type="file" name="file4" /></td>
+                            <td><input type="file" name="file4" /></td>
+                        </tr>
+                        <tr class="success">
+                            <td>video 5</td>
+                            <td><input type="file" name="file5" /></td>
+                            <td><input type="file" name="file5" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="col-sm-10">
+                    <tr>
+                        <th><input type="submit" class="btn btn-info"/></th>
+                    </tr>
+                </div>
+                <div class="col-sm-10">
+                    <br/>
+                    <br/>
+                    <tr>
+                        <a th:href="@{'/video/list'}" class="btn btn-info">video list</a>
+                        <th><a href="/file/download" class="btn btn-info">download</a></th>
+                    </tr>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--<p>Get your greeting <a href="/greeting" rel="external nofollow" >here</a></p>
+<form action="/video/add" method="POST" enctype="multipart/form-data">
+    文件：<input type="file" name="videoFile"/>
+    <input type="submit" />
+</form>-->
+
+
+
+
+<!--<p>多文件上传</p>
+<form method="POST" enctype="multipart/form-data" action="/batch/upload">
+    <p>文件1：<input type="file" name="file" /></p>
+    <p>文件2：<input type="file" name="file" /></p>
+    <p><input type="submit" value="上传" /></p>
+</form>-->
+
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html lang="en">
+&lt;!&ndash;<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>&ndash;&gt;
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Insert title here</title>
+</head>
+<body>
+<form action="http://10.1.67.98:8080/testUploadFile" method="POST" enctype="multipart/form-data">
+    <p>单文件上传：</p><br/>
+    <input type="file" name="file1"/>
+    <input type="submit" value = "上传"/>
+</form>
+<form method="POST" enctype="multipart/form-data"
+      action="http://localhost:8080/testUploadFiles">
+    <p>多文件上传：</p>
+    <p>文件1：<input type="file" name="file" /></p>
+    <p>文件2：<input type="file" name="file" /></p>
+    <p><input type="submit" value="上传" /></p>
+</form>
+<a href="http://localhost:8080/testDownload">下载</a>
+</body>
+</html>-->
+
