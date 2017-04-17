@@ -23,7 +23,7 @@ CREATE TABLE `book` (
   `id` int(11) NOT NULL,
   `title` varchar(125) NOT NULL,
   `description` varchar(512) NOT NULL,
-  `put_time` datetime NOT NULL,
+  `put_time` timestamp NOT NULL,
   `author` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -123,8 +123,8 @@ CREATE TABLE `order` (
   `actual_income` varchar(255) NOT NULL,
   `channel_fee` varchar(255) NOT NULL,
   `channel_rate` double NOT NULL,
-  `create_time` datetime NOT NULL,
-  `pay_time` datetime DEFAULT NULL,
+  `create_time`   timestamp  not null  default CURRENT_TIMESTAMP  comment '创建时间',
+  `pay_time` timestamp,
   `pay_status` varchar(255) DEFAULT NULL,
   `pay_status_desc` varchar(255) DEFAULT NULL,
   `pay_version` varchar(255) DEFAULT NULL,
@@ -280,7 +280,7 @@ CREATE TABLE `sys_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `create_time`  timestamp  not null  default CURRENT_TIMESTAMP  comment '创建时间',
   PRIMARY KEY (`id`),
   KEY `index` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
@@ -389,7 +389,7 @@ CREATE TABLE `video_product` (
   `snapshot_url` varchar(1000) DEFAULT NULL,
   `default_play_time` int(11) NOT NULL,
   `is_second_open` char(1) DEFAULT NULL,
-  `Create_Time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time`  timestamp  not null  default CURRENT_TIMESTAMP  comment '创建时间',
   `status` varchar(1) NOT NULL,
   `picture_url` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`),
