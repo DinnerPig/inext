@@ -66,14 +66,14 @@ public class VideoController
     @RequestMapping("/add")
     String add(HttpServletRequest request,
         @RequestParam("fileType") String fileType,
-        @RequestParam("fileNum") int fileNum,
-        @RequestParam("videoFile") MultipartFile file)
+        @RequestParam(name = "fileNum", required = false) int fileNum,
+        @RequestParam(name = "videoFile", required = false) MultipartFile file)
     {
         // 多文件上传处理
         if ("multiFile".equals(fileType))
         {
             String fileName = "file";
-            for (int i = 0; i < fileNum; i++)
+            for (int i = 1; i <= fileNum; i++)
             {
                 fileName = fileName + i;
                 List<MultipartFile> files =
@@ -81,7 +81,7 @@ public class VideoController
                 List<String> fileNoList = FileUtil.multiUpload(files, videoPath);
                 if (!CollectionUtils.isEmpty(fileNoList) && fileNoList.size() ==2 )
                 {
-                    String oriFileName = file.getOriginalFilename();
+                    String oriFileName = files.get(0).getOriginalFilename();
                     String fName =
                             oriFileName.substring(0, oriFileName.lastIndexOf("."));
                     String videoP = videoPath + fileNoList.get(0);
@@ -90,6 +90,7 @@ public class VideoController
                             new VideoProduct(fileNoList.get(0), fName, videoP, picUtl);
                     videoService.create(videoProduct);
                 }
+                fileName = "file";
             }
         }
         if ("singleFile".equals(fileType))

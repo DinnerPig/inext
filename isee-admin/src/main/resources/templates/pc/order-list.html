@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>订单列表页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"/>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    -->
+    <script src="../../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"/>
+</head>
+<body>
+<!-- 页面显示部分 -->
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h2>订单列表</h2>
+        </div>
+        <div class="panel-body">
+            <a href="#" class="btn btn-info" th:href="@{/order/pre-add}">添加订单</a>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>用户</th>
+                    <th>产品编号</th>
+                    <th>产品描述</th>
+                    <th>订单原始金额</th>
+                    <th>实际入账</th>
+                    <th>通道费</th>
+                    <th>通道费率</th>
+                    <th>支付状态</th>
+                    <th>订单时间</th>
+                    <th>订单支付时间</th>
+                    <th>支付版本号</th>
+                    <th>SDK版本号</th>
+                    <th>应用包名</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  th:each="order : ${orderList}">
+                    <td th:text="${order.terminalNo}"/>
+                    <td th:text="${order.productNo}"/>
+                    <td th:text="${order.productDesc}"/>
+                    <td th:text="${order.originAmount}"/>
+                    <td th:text="${order.actualIncome}"/>
+                    <td th:text="${order.channelFee}"/>
+                    <td th:text="${order.channelRate}"/>
+                    <td th:text="${order.createTime}"/>
+                    <td th:text="${order.payTime}"/>
+                    <td th:text="${order.payStatusDesc}"/>
+                    <td th:text="${order.payVersion}"/>
+                    <td th:text="${order.sdkVersion}"/>
+                    <td th:text="${order.packageName}"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div style="position:absolute;bottom:10px;left:12px;height:24px;">
+    <p>版权所有：杭州艾奈斯特信息技术有限公司   *ICP备*号</p>
+    <p>地址：杭州******  邮编：***** 技术支持：XXXX</p>
+</div>
+</body>
+</html>
+

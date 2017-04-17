@@ -37,7 +37,7 @@ mybatis:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/isee?serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/isee?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&autoReconnect=true
     username: root
     password: dinner
     driver-class-name: com.mysql.cj.jdbc.Driver

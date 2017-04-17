@@ -24,8 +24,8 @@
             <span class="btn btn-info">single video upload</span>
         </div>
         <div class="panel-body" align="center">
-            <form class="form-horizontal" role="form" action="/video/add?fileType=singleFile" method="POST" enctype="multipart/form-data">
-                <!--<input type="hidden" value="singleFile" name="fileType"/>-->
+            <form class="form-horizontal" role="form" action="/video/add" method="POST" enctype="multipart/form-data">
+                <input type="hidden" value="singleFile" name="fileType"/>
                 <div class="col-sm-10">
                     <tr>
                         <th><input type="file" name="videoFile"/> </th>
@@ -48,8 +48,10 @@
             <span class="btn btn-info">multi video upload</span>
         </div>
         <div class="panel-body" align="center">
-            <form class="form-horizontal" role="form" action="/video/add?fileType=multiFile&;fileNum=5" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" role="form" action="/video/add" method="POST" enctype="multipart/form-data">
                 <table class="table">
+                    <input type="hidden" value="multiFile" name="fileType"/>
+                    <input type="hidden" value="2" name="fileNum"/>
                     <!--<caption>上下文表格布局</caption>-->
                     <!--<input type="hidden" value="multiFile" name="fileType"/>-->
                     <thead>
@@ -70,7 +72,7 @@
                             <td><input type="file" name="file2" /></td>
                             <td><input type="file" name="file2" /></td>
                         </tr>
-                        <tr  class="warning">
+                        <!--<tr  class="warning">
                             <td>video 3</td>
                             <td><input type="file" name="file3" /></td>
                             <td><input type="file" name="file3" /></td>
@@ -84,7 +86,7 @@
                             <td>video 5</td>
                             <td><input type="file" name="file5" /></td>
                             <td><input type="file" name="file5" /></td>
-                        </tr>
+                        </tr>-->
                     </tbody>
                 </table>
 
